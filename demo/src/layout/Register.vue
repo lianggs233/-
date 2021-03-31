@@ -5,49 +5,38 @@
         <div slot="header" class="clearfix">
           <h1>注册</h1>
         </div>
-        <table align="center">
-          <tr>
-            <td>用户名:</td>
-            <td>
-              <el-input
-                v-model="user.username"
-                placeholder="请输入用户名"
-              ></el-input>
-            </td>
-          </tr>
-          <tr>
-            <td>密码:</td>
-            <td>
-              <el-input
-                v-model="user.password"
-                placeholder="请输入密码"
-                @keydown.enter.native="doLogin"
-              ></el-input>
-            </td>
-          </tr>
-          <tr>
-            <td>手机号：</td>
-            <td><el-input v-model="phonenum"></el-input></td>
-          </tr>
-          <tr>
-            <td>邮箱：</td>
-            <td><el-input v-model="email"></el-input></td>
-          </tr>
-          <tr>
-            <td>年龄：</td>
-            <td><el-input v-model="year"></el-input></td>
-          </tr>
-          </table>
-          <table>
-          <tr>
-            <td>
-              <el-button type="primary" @click="doRegister">注册</el-button>
-            </td>
-            <td>
-              <el-button type="primary" @click="doCannel">取消</el-button>
-            </td>
-          </tr>
-        </table>
+        <el-form ref="user" :model="user">
+          <el-form-item prop="username">
+            <el-input
+              v-model="user.username"
+              placeholder="请输入用户名"
+            ></el-input>
+          </el-form-item>
+          <el-form-item  prop="password">
+            <el-input
+              v-model="user.password"
+              placeholder="请输入密码"
+            ></el-input>
+          </el-form-item>
+          <el-form-item  prop="email">
+            <el-input
+              v-model="user.email"
+              placeholder="邮箱"
+            ></el-input>
+          </el-form-item>
+          <el-form-item  prop="phonenum">
+            <el-input
+              v-model="user.phonenum"
+              placeholder="手机号"
+            ></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" class="btn1" @click="doRegister">注册</el-button>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" class="btn1" @click="doCannel">取消</el-button>
+          </el-form-item>
+        </el-form>
       </el-card>
     </div>
   </div>
@@ -58,8 +47,10 @@ export default {
   data () {
     return {
       user: {
-        username: ' ',
-        password: ' '
+        username: '',
+        password: '',
+        email: '',
+        phonenum: ''
       }
     }
   },
@@ -76,9 +67,9 @@ export default {
 
 <style>
 .login {
-  height: 69.5%;
+  height: 100%;
   background-color: #545c64;
-  padding-top: 15%;
+  padding-top: 10%;
   overflow:hidden;
 }
 
@@ -88,27 +79,11 @@ export default {
   margin: auto;
 }
 
-.avatar_box {
-  height: 100px;
-  width: 100px;
-  border: 1px soild #eee;
-  border-radius: 50%;
-  padding: 10px;
-  box-shadow: 0 0 10px #ddd;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  background-color: #fff;
-}
-
 .clearfix{
   height: 60px;
 }
 
-.img1{
-  height:100%;
-  width:100%;
-  border-radius: 50%;
-  background-color: #eee;
+.btn1{
+  width: 80%;
 }
 </style>

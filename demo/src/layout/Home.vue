@@ -8,7 +8,7 @@
       <Header></Header>
       </el-header>
       <el-main>
-      <div class="container_main" align="center">main</div>
+      <div class="container_main" align="center" style="height=1000px">main</div>
       </el-main>
     </el-container>
   </el-container>

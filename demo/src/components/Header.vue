@@ -6,7 +6,7 @@
       <el-dropdown-menu slot="dropdown">
         <el-dropdown-item>个人资料</el-dropdown-item>
         <el-dropdown-item>修改信息</el-dropdown-item>
-        <el-dropdown-item>注销</el-dropdown-item>
+        <el-dropdown-item @click.native="doBack">注销</el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
   </div>
@@ -17,6 +17,10 @@
 
 <script>
 export default {
-  methods: {}
+  methods: {
+    doBack () {
+      this.$router.push({ path: '/' })
+    }
+  }
 }
 </script>
