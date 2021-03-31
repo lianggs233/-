@@ -1,0 +1,7 @@
+{
+    "recommendations": [
+        "dbaeumer.vscode-eslint",
+        "akamud.vscode-javascript-snippet-pack",
+        "xabikos.javascriptsnippets"
+    ]
+}
