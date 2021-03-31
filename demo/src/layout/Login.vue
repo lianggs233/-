@@ -30,6 +30,7 @@
               prefix-icon="el-icon-magic-stick"
               @keydown.enter.native="doLogin"
             ></el-input>
+            <Identify></Identify>
           </el-form-item>
           <el-form-item class="item_left">
             <el-button type="primary" class="btn1" @click="doLogin">登录</el-button>
@@ -47,7 +48,10 @@
 </template>
 
 <script>
+import Identify from '@/components/identify'
+
 export default {
+  components: { Identify },
   data () {
     return {
       user: {
