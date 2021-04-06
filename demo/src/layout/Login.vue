@@ -30,6 +30,7 @@
               prefix-icon="el-icon-magic-stick"
               @keydown.enter.native="doLogin"
             ></el-input>
+            <Identify :idetifyCode="identifyCode"></Identify>
           </el-form-item>
           <el-form-item class="item_left">
             <el-button type="primary" class="btn1" @click="doLogin">登录</el-button>
@@ -47,13 +48,30 @@
 </template>
 
 <script>
+import Identify from '@/components/Identify'
 export default {
+  components: {
+    Identify
+  },
   data () {
     return {
       user: {
         username: '',
         password: '',
         seccode: ''
+      },
+      identifyCodes: '123456789abcdefghijklmnopqrstuvwxyz',
+      identifyCode: '',
+      rules: {
+        username: [
+          {required: true, message: '请输入用户名', trigger: 'blur'}
+        ],
+        password: [
+          {required: true, message: '请输入密码', trigger: 'blur'}
+        ],
+        seccode: [
+          {required: true, message: '请输入验证码', trigger: 'blur'}
+        ]
       }
     }
   },
@@ -71,6 +89,11 @@ export default {
     doRegister () {
       this.$router.push({ path: '/register' })
     }
+  },
+  mounted () {
+    /* 初始化验证码 */
+    this.identifyCode = ''
+    this.makeCode(this.identifyCodes, 4)
   }
 }
 </script>
