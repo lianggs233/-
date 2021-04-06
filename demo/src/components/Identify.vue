@@ -43,12 +43,12 @@ export default {
     contentWidth: {
       /* 容器宽度 */
       type: Number,
-      default: 90
+      default: 112
     },
     contentHeight: {
       /* 容器高度 */
       type: Number,
-      default: 38
+      default: 31
     }
   },
 
@@ -73,7 +73,9 @@ export default {
       let ctx = canvas.getContext('2d') /* 指定了二维绘图，并且导致这个方法返回一个环境对象，该对象导出一个二维绘图 API。 */
       ctx.textBaseline = 'bottom'
       /* 绘制背景 */
-      ctx.fillStyle = '#e6ecfd'
+      ctx.fillStyle = this.randomColor(this.backgroundColorMin, this.backgroundColorMax)
+
+      /* ctx.fillStyle = '#e6ecfd' */
       ctx.fillRect(0, 0, this.contentWidth, this.contentHeight)
       /* 绘制文字 */
       for (let i = 0; i < this.identifyCode.length; i++) {

@@ -7,7 +7,7 @@
             <img src="@/assets/css/logo.png" alt="" class="img1" />
           </div>
         </div>
-        <el-form ref="user" :model="user">
+        <el-form ref="user" :model="user" :rules="rules">
           <el-form-item  prop="username">
             <el-input
               v-model="user.username"
@@ -23,13 +23,15 @@
               type="password"
             ></el-input>
           </el-form-item>
-          <el-form-item class=""  prop="seccode">
+          <el-form-item  prop="seccode">
             <el-input
               v-model="user.seccode"
               placeholder="请输入验证码"
               prefix-icon="el-icon-magic-stick"
               @keydown.enter.native="doLogin"
             ></el-input>
+          </el-form-item>
+          <el-form-item class="identify">
             <Identify :idetifyCode="identifyCode"></Identify>
           </el-form-item>
           <el-form-item class="item_left">
@@ -76,15 +78,38 @@ export default {
     }
   },
   methods: {
-    doLogin () {
-      if (
-        this.user.username === 'zhanshan' &&
-        this.user.password === '123456'
-      ) {
-        alert('登录成功')
-      } else {
-        alert('账号密码错误')
+    /* 重置验证码 */
+    rerfreshCode () {
+      this.identifyCode = ''
+      this.makeCode(this.identifyCodes, 4)
+    },
+    makeCode (o, l) {
+      for (let i = 0; i < l; i++) {
+        this.identifyCode += this.identifyCodes[this.randomNum(0, this.identifyCodes.length)]
       }
+    },
+    randomNum (min, max) {
+      return Math.floor(Math.random() * (max - min) + min)
+    },
+    doLogin () {
+      if (this.user.seccode.toLowerCase() !== this.identifyCode.toLowerCase()) {
+        this.$message.error('请输入正确验证码')
+        this.rerfreshCode()
+        return
+      }
+      this.$refs.user.validate(valid => {
+        if (valid) {
+          /* 登录 */
+
+          this.login({
+            vm: this,
+            username: this.user.username,
+            password: this.user.password
+          })
+        } else {
+          this.$message.error('表单验证失败')
+        }
+      })
     },
     doRegister () {
       this.$router.push({ path: '/register' })
@@ -102,8 +127,8 @@ export default {
 .login {
   height: 100%;
   background-color: #545c64;
-  padding-top: 10%;
-  padding-right: 0px !important;
+  padding-top: 5%;
+/*   padding-right: 0px !important; */
   overflow-y: hidden;
 }
 
@@ -137,11 +162,11 @@ export default {
   background-color: #eee;
 }
 
-.item.left{
-  text-align: left;
-}
-
 .btn1{
   width: 70%;
+}
+
+.identify{
+  text-align: right;
 }
 </style>

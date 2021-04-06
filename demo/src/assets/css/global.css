@@ -6,6 +6,6 @@ html,body,#app{
 
   /* 防止输入抖动 */
   /* !important 提高样式规则的应用优先权 */
-  padding-right: 0px !important;
+ /*  padding-right: 0px !important; */
   overflow: hidden;
 }

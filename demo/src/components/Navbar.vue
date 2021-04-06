@@ -15,11 +15,9 @@
           <i class="el-icon-d-caret"></i>
           <span slot="title">题目管理</span>
         </template>
-        <el-submenu index="1-1">
-          <span slot="title">题库管理</span>
-          <el-menu-item index="1-1-1">上传题库</el-menu-item>
-          <el-menu-item index="1-1-2">查询题库</el-menu-item>
-        </el-submenu>
+        <el-menu-item index="">
+          <template slot="title">题库管理</template>
+        </el-menu-item>
         <el-menu-item index="1-2">
           <template slot="title">题型管理</template>
         </el-menu-item>
