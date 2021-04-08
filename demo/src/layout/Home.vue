@@ -5,10 +5,12 @@
       </el-aside>
     <el-container>
       <el-header class="el-header">
-      <Header></Header>
+        <Header></Header>
       </el-header>
-      <el-main>
-      <div class="container_main" align="center" style="height=1000px">main</div>
+      <el-main class="el-main">
+      <div class="container_main" align="center" style="height=1000px">
+        <Question></Question>
+        </div>
       </el-main>
     </el-container>
   </el-container>
@@ -35,19 +37,24 @@
   left: 0;
   top: 60px;
   bottom: 0;
-  min-height: 80%;
+  min-height: 100%;
   width: auto;
   overflow-y: scroll;
+}
+.el-main{
+  margin-left: 300px;
 }
 </style>
 
 <script>
 import Navbar from '@/components/Navbar'
 import Header from '@/components/Header'
+import Question from '@/components/Question'
 export default {
   components: {
     Navbar,
-    Header
+    Header,
+    Question
   }
 }
 </script>

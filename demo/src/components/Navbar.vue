@@ -1,5 +1,4 @@
 <template id="navbar">
-  <div>
     <el-menu
       default-active="1-4-1"
       class="el-menu-vertical-demo"
@@ -57,7 +56,6 @@
           <el-menu-item index="5-3">AI提高</el-menu-item>
       </el-submenu>
     </el-menu>
-  </div>
 </template>
 
 <style>
