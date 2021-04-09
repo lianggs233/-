@@ -2,7 +2,7 @@
   <div class="question">
     <el-card>
       <div slot="header">
-        <el-row :gutter="0">
+        <el-row :gutter="5">
         <el-col :span="6" style="text-align:start;">
           <el-button type="primary" size='small' icon="el-icon-upload">上传</el-button>
           <el-button type="primary" size="small" icon="el-icon-folder-add"  @click="editDialog">新建</el-button>
@@ -22,7 +22,7 @@
           border
           style="width: 100%">
           <el-table-column
-            prop="id"
+            type="index"
             label="序号"
             width="50">
           </el-table-column>
@@ -70,8 +70,8 @@
             label="操作"
             width="180">
           <template>
-            <el-button type="text" size="small">查看</el-button>
-            <el-button type="text" size="small">编辑</el-button>
+            <el-button type="primary" size="small">查看</el-button>
+            <el-button type="primary" size="small">编辑</el-button>
           </template>
           </el-table-column>
         </el-table>
@@ -85,7 +85,56 @@ export default {
   data () {
     return {
       questionData: [{
-        id: '1',
+        content: '123',
+        analysis: 'asdaasdasdasdasdasdasdasdasdasdasds',
+        score: '5',
+        name: '16161',
+        difficulty: '难',
+        type: '判断',
+        subject: '数学',
+        date: '2021-10-09'
+      },
+      {
+        content: '123',
+        analysis: 'asdaasdasdasdasdasdasdasdasdasdasds',
+        score: '5',
+        name: '16161',
+        difficulty: '难',
+        type: '判断',
+        subject: '数学',
+        date: '2021-10-09'
+      },
+      {
+        content: '123',
+        analysis: 'asdaasdasdasdasdasdasdasdasdasdasds',
+        score: '5',
+        name: '16161',
+        difficulty: '难',
+        type: '判断',
+        subject: '数学',
+        date: '2021-10-09'
+      },
+      {
+        content: '123',
+        analysis: 'asdaasdasdasdasdasdasdasdasdasdasds',
+        score: '5',
+        name: '16161',
+        difficulty: '难',
+        type: '判断',
+        subject: '数学',
+        date: '2021-10-09'
+      },
+      {
+        content: '123',
+        analysis: 'asdaasdasdasdasdasdasdasdasdasdasds',
+        score: '5',
+        name: '16161',
+        difficulty: '难',
+        type: '判断',
+        subject: '数学',
+        date: '2021-10-09'
+      },
+      {
         content: '123',
         analysis: 'asdaasdasdasdasdasdasdasdasdasdasds',
         score: '5',
