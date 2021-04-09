@@ -1,8 +1,22 @@
 <template>
   <div class="question">
     <el-card>
-      <div slot="header">题库</div>
-      <div>
+      <div slot="header">
+        <el-row :gutter="0">
+        <el-col :span="6" style="text-align:start;">
+          <el-button type="primary" size='small' icon="el-icon-upload">上传</el-button>
+          <el-button type="primary" size="small" icon="el-icon-folder-add"  @click="editDialog">新建</el-button>
+        </el-col>
+        <el-col :span="4" :offset="10">
+        <el-input v-model="search" placeholder="Search" size='small' prefix-icon="el-icon-search"></el-input>
+        </el-col>
+        <el-col :span="4">
+            <el-button size='small' type="info" icon="el-icon-arrow-down">选择</el-button>
+            <el-button type="info" size='small' icon="el-icon-download">下载</el-button>
+        </el-col>
+         </el-row>
+      </div>
+      <div class="table1">
         <el-table
           :data="questionData"
           border
@@ -10,56 +24,56 @@
           <el-table-column
             prop="id"
             label="序号"
-            width="180">
+            width="50">
           </el-table-column>
           <el-table-column
             prop="content"
             label="内容"
-            width="180">
+            width="120">
           </el-table-column>
           <el-table-column
             prop="analysis"
             label="解析"
-            width="180">
+            width="240">
           </el-table-column>
           <el-table-column
             prop="score"
             label="分数"
-            width="180">
+            width="50">
           </el-table-column>
           <el-table-column
             prop="name"
             label="创建人"
-            width="180">
+            width="80">
           </el-table-column>
           <el-table-column
             prop="difficulty"
             label="难度"
-            width="180">
+            width="90">
           </el-table-column>
           <el-table-column
             prop="type"
             label="题型"
-            width="180">
+            width="90">
           </el-table-column>
           <el-table-column
             prop="subject"
             label="学科"
-            width="180">
+            width="90">
           </el-table-column>
           <el-table-column
             prop="date"
             label="操作日期"
-            width="180">
+            width="145">
           </el-table-column>
           <el-table-column
             label="操作"
             width="180">
-          </el-table-column>
           <template>
-        <el-button type="text" size="small">查看</el-button>
-        <el-button type="text" size="small">编辑</el-button>
-      </template>
+            <el-button type="text" size="small">查看</el-button>
+            <el-button type="text" size="small">编辑</el-button>
+          </template>
+          </el-table-column>
         </el-table>
       </div>
     </el-card>
@@ -73,7 +87,7 @@ export default {
       questionData: [{
         id: '1',
         content: '123',
-        analysis: 'asdas',
+        analysis: 'asdaasdasdasdasdasdasdasdasdasdasds',
         score: '5',
         name: '16161',
         difficulty: '难',
@@ -86,6 +100,9 @@ export default {
   methods: {
     handleClick (row) {
       console.log(row)
+    },
+    editDialog () {
+      this.$router.push({path: '/'})
     }
   }
 }
@@ -94,5 +111,8 @@ export default {
 <style>
 .question{
   min-height: 100%;
+}
+.table1{
+  overflow-y: scroll;
 }
 </style>

@@ -21,18 +21,21 @@
               placeholder="请输入密码"
               prefix-icon="el-icon-warning"
               type="password"
+              show-password
             ></el-input>
           </el-form-item>
           <el-form-item  prop="seccode">
+            <el-row :gutter="10">
+              <el-col :span="18">
             <el-input
               v-model="user.seccode"
               placeholder="请输入验证码"
               prefix-icon="el-icon-magic-stick"
               @keydown.enter.native="doLogin"
             ></el-input>
-          </el-form-item>
-          <el-form-item class="identify">
-            <Identify :idetifyCode="identifyCode"></Identify>
+            </el-col>
+            <el-col :span="6"><Identify :idetifyCode="identifyCode"></Identify></el-col>
+            </el-row>
           </el-form-item>
           <el-form-item class="item_left">
             <el-button type="primary" class="btn1" @click="doLogin">登录</el-button>
@@ -127,7 +130,7 @@ export default {
 .login {
   height: 100%;
   background-color: #545c64;
-  padding-top: 5%;
+  padding-top: 8%;
 /*   padding-right: 0px !important; */
   overflow-y: hidden;
 }
@@ -164,9 +167,5 @@ export default {
 
 .btn1{
   width: 70%;
-}
-
-.identify{
-  text-align: right;
 }
 </style>

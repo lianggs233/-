@@ -8,9 +8,7 @@
         <Header></Header>
       </el-header>
       <el-main class="el-main">
-      <div class="container_main" align="center" style="height=1000px">
-        <Question></Question>
-        </div>
+        <router-view />
       </el-main>
     </el-container>
   </el-container>

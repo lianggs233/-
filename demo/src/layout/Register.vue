@@ -69,7 +69,7 @@ export default {
 .login {
   height: 100%;
   background-color: #545c64;
-  padding-top: 10%;
+  padding-top: 8%;
   overflow:hidden;
 }
 

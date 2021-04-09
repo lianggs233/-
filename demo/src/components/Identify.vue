@@ -48,7 +48,7 @@ export default {
     contentHeight: {
       /* 容器高度 */
       type: Number,
-      default: 31
+      default: 40
     }
   },
 

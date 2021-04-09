@@ -14,7 +14,7 @@
           <i class="el-icon-d-caret"></i>
           <span slot="title">题目管理</span>
         </template>
-        <el-menu-item index="">
+        <el-menu-item index="/home/Question">
           <template slot="title">题库管理</template>
         </el-menu-item>
         <el-menu-item index="1-2">
