@@ -5,12 +5,12 @@
         <el-row :gutter="5">
         <el-col :span="6" style="text-align:start;">
           <el-button type="primary" size='small' icon="el-icon-upload">上传</el-button>
-          <el-button type="primary" size="small" icon="el-icon-folder-add"  @click="editDialog">新建</el-button>
+          <el-button type="primary" size="small" icon="el-icon-folder-add"  @click="dialogVisible = true">新建</el-button>
         </el-col>
-        <el-col :span="4" :offset="10">
+        <el-col :span="4" :offset="9">
         <el-input v-model="search" placeholder="Search" size='small' prefix-icon="el-icon-search"></el-input>
         </el-col>
-        <el-col :span="4">
+        <el-col :span="5">
             <el-button size='small' type="info" icon="el-icon-arrow-down">选择</el-button>
             <el-button type="info" size='small' icon="el-icon-download">下载</el-button>
         </el-col>
@@ -75,13 +75,18 @@
           </template>
           </el-table-column>
         </el-table>
+        <EditDialog />
       </div>
     </el-card>
   </div>
 </template>
 
 <script>
+import EditDialog from '@/components/EditDialog'
 export default {
+  components: {
+    EditDialog
+  },
   data () {
     return {
       questionData: [{

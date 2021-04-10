@@ -25,7 +25,6 @@
   color: #eee;
   line-height: 60px;
   height: 100%;
-  text-align: right;
 }
 
 .el-aside {

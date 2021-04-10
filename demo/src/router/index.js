@@ -4,6 +4,7 @@ import Login from '@/layout/Login'
 import Register from '@/layout/Register'
 import Home from '@/layout/Home'
 import Question from '@/components/Question'
+import EditDialog from '@/components/EditDialog'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
           path: 'Question',
           name: 'Question',
           component: Question
+        },
+        {
+          path: 'editdialog',
+          name: 'editdialog',
+          component: EditDialog
         }
       ]
     }
