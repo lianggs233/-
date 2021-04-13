@@ -66,6 +66,7 @@
 </style>
 <script>
 export default {
+  name: 'Navbar',
   data () {
     return {
       isCollapse: false

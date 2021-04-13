@@ -3,8 +3,8 @@ import Router from 'vue-router'
 import Login from '@/layout/Login'
 import Register from '@/layout/Register'
 import Home from '@/layout/Home'
-import Question from '@/components/Question'
-import EditDialog from '@/components/EditDialog'
+import Question from '@/views/Question'
+import EditDialog from '@/views/modules/EditDialog'
 
 Vue.use(Router)
 

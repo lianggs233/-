@@ -3,18 +3,19 @@
     <el-card>
       <div slot="header">
         <el-row :gutter="5">
-        <el-col :span="6" style="text-align:start;">
+        <el-col :span="6" :style="{float:'left'}">
           <el-button type="primary" size='small' icon="el-icon-upload">上传</el-button>
-          <el-button type="primary" size="small" icon="el-icon-folder-add"  @click="dialogVisible = true">新建</el-button>
+          <el-button type="primary" size="small" icon="el-icon-folder-add"  @click="$refs.EditDialog.create()">新建</el-button>
         </el-col>
-        <el-col :span="4" :offset="9">
+        <el-col :span="4" :offset="10">
         <el-input v-model="search" placeholder="Search" size='small' prefix-icon="el-icon-search"></el-input>
         </el-col>
-        <el-col :span="5">
+        <el-col :span="4" :style="{float:'right'}">
             <el-button size='small' type="info" icon="el-icon-arrow-down">选择</el-button>
             <el-button type="info" size='small' icon="el-icon-download">下载</el-button>
         </el-col>
          </el-row>
+        <EditDialog  ref="EditDialog"/>
       </div>
       <div class="table1">
         <el-table
@@ -75,20 +76,20 @@
           </template>
           </el-table-column>
         </el-table>
-        <EditDialog />
       </div>
     </el-card>
   </div>
 </template>
 
 <script>
-import EditDialog from '@/components/EditDialog'
+import EditDialog from '@/views/modules/EditDialog'
 export default {
   components: {
     EditDialog
   },
   data () {
     return {
+      aVisible: false,
       questionData: [{
         content: '123',
         analysis: 'asdaasdasdasdasdasdasdasdasdasdasds',
@@ -152,12 +153,6 @@ export default {
     }
   },
   methods: {
-    handleClick (row) {
-      console.log(row)
-    },
-    editDialog () {
-      this.$router.push({path: '/'})
-    }
   }
 }
 </script>

@@ -46,12 +46,10 @@
 <script>
 import Navbar from '@/components/Navbar'
 import Header from '@/components/Header'
-import Question from '@/components/Question'
 export default {
   components: {
     Navbar,
-    Header,
-    Question
+    Header
   }
 }
 </script>
