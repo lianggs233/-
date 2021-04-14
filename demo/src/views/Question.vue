@@ -4,8 +4,8 @@
       <div slot="header">
         <el-row :gutter="5">
         <el-col :span="6" :style="{float:'left'}">
-          <el-button type="primary" size='small' icon="el-icon-upload">上传</el-button>
-          <el-button type="primary" size="small" icon="el-icon-folder-add"  @click="$refs.EditDialog.create()">新建</el-button>
+          <el-button type="primary" size='small' icon="el-icon-upload" @click="upload">上传</el-button>
+          <el-button type="primary" size="small" icon="el-icon-folder-add"  @click="$ref.EditDialog.create()">新建</el-button>
         </el-col>
         <el-col :span="4" :offset="10">
         <el-input v-model="search" placeholder="Search" size='small' prefix-icon="el-icon-search"></el-input>
@@ -89,7 +89,7 @@ export default {
   },
   data () {
     return {
-      aVisible: false,
+      /* visible: false, */
       questionData: [{
         content: '123',
         analysis: 'asdaasdasdasdasdasdasdasdasdasdasds',
@@ -153,6 +153,13 @@ export default {
     }
   },
   methods: {
+    question () {
+      this.visible = true
+      /* this.$router.push({path: '/home/editdialog'}) */
+    },
+    upload () {
+      this.$router.push({path: '/home/upload'})
+    }
   }
 }
 </script>

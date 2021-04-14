@@ -5,6 +5,7 @@ import Register from '@/layout/Register'
 import Home from '@/layout/Home'
 import Question from '@/views/Question'
 import EditDialog from '@/views/modules/EditDialog'
+import Upload from '@/views/modules/Upload'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
           path: 'editdialog',
           name: 'editdialog',
           component: EditDialog
+        },
+        {
+          path: 'upload',
+          name: 'upload',
+          component: Upload
         }
       ]
     }

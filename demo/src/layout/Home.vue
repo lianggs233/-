@@ -34,7 +34,7 @@
   left: 0;
   top: 60px;
   bottom: 0;
-  min-height: 100%;
+  min-height: 80%;
   width: auto;
   overflow-y: scroll;
 }
