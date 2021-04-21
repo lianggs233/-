@@ -107,7 +107,7 @@ export default {
         ctx.beginPath()
         ctx.moveTo(this.randomNum(0, this.contentWidth), this.randomNum(0, this.contentHeight))
         ctx.lineTo(this.randomNum(0, this.contentWidth), this.randomNum(0, this.contentHeight))
-        ctx.stroke()
+        ctx.stroke() /* stroke() 方法会实际地绘制出通过 moveTo() 和 lineTo() 方法定义的路径。 */
       }
     },
 
@@ -115,9 +115,9 @@ export default {
     /* 绘制干扰点 */
       for (let i = 0; i < 30; i++) {
         ctx.fillStyle = this.randomColor(0, 255)
-        ctx.beginPath()
+        ctx.beginPath() /* 丢弃任何当前定义的路径并且开始一条新的路径。它把当前的点设置为 (0,0)。 */
         ctx.arc(this.randomNum(0, this.contentWidth), this.randomNum(0, this.contentHeight), 1, 0, 2 * Math.PI)
-        ctx.fill()
+        ctx.fill() /* fill() 方法用于将一个固定值替换数组的元素。 */
       }
     }
   },

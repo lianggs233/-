@@ -3,19 +3,18 @@
     <el-card>
       <div slot="header">
         <el-row :gutter="5">
-        <el-col :span="6" :style="{float:'left'}">
-          <el-button type="primary" size='small' icon="el-icon-upload" @click="upload">上传</el-button>
-          <el-button type="primary" size="small" icon="el-icon-folder-add"  @click="$ref.EditDialog.create()">新建</el-button>
+        <el-col :span="12" :style="{float:'left'}">
+          <el-button type="primary" size='small' icon="el-icon-upload" @click="showModal1">上传</el-button>
+          <el-button type="primary" size="small" icon="el-icon-folder-add"  @click="showModal">新建</el-button>
         </el-col>
-        <el-col :span="4" :offset="10">
-        <el-input v-model="search" placeholder="Search" size='small' prefix-icon="el-icon-search"></el-input>
-        </el-col>
-        <el-col :span="4" :style="{float:'right'}">
+        <el-col :span="12"  style="text-align:end;">
+        <el-input v-model="search" placeholder="Search" size='small'  prefix-icon="el-icon-search" style="width:50%;"></el-input>
             <el-button size='small' type="info" icon="el-icon-arrow-down">选择</el-button>
             <el-button type="info" size='small' icon="el-icon-download">下载</el-button>
         </el-col>
          </el-row>
-        <EditDialog  ref="EditDialog"/>
+        <EditDialog ref="editdialogModal" />
+        <FileUpload ref="uploadModal"/>
       </div>
       <div class="table1">
         <el-table
@@ -82,14 +81,15 @@
 </template>
 
 <script>
-import EditDialog from '@/views/modules/EditDialog'
+import EditDialog from './modules/EditDialog'
+import FileUpload from './modules/FileUpload'
 export default {
   components: {
-    EditDialog
+    EditDialog,
+    FileUpload
   },
   data () {
     return {
-      /* visible: false, */
       questionData: [{
         content: '123',
         analysis: 'asdaasdasdasdasdasdasdasdasdasdasds',
@@ -153,12 +153,15 @@ export default {
     }
   },
   methods: {
-    question () {
-      this.visible = true
-      /* this.$router.push({path: '/home/editdialog'}) */
+    showModal () {
+      this.$nextTick(() => {
+        this.$refs.editdialogModal.initShow() /* 这种方式,直接去子组件中控制modal打开和关闭 */
+      })
     },
-    upload () {
-      this.$router.push({path: '/home/upload'})
+    showModal1 () {
+      this.$nextTick(() => {
+        this.$refs.uploadModal.initShow()
+      })
     }
   }
 }

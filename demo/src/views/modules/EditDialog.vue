@@ -5,23 +5,23 @@
       :visible.sync="visible"
       width="width"
       :before-close="dialogBeforeClose">
-    <el-form :model="questionData" :label-position="labelPosition" label-width="40px" label="left">
+    <el-form :model="questionData" :label-position="labelPosition" :rules="rules" label-width="60px" label="left">
         <el-steps :active="active"  finish-status="success" class="step">
           <el-step title="问题内容"></el-step>
           <el-step title="问题分类"></el-step>
           <el-step title="问题选项"></el-step>
         </el-steps>
         <div v-show="active === 0">
-          <el-form-item label="内容">
+          <el-form-item label="内容" prop="content">
             <div><el-input v-model="questionData.content" placeholder="请输入内容"></el-input></div>
           </el-form-item>
-          <el-form-item label="解析">
+          <el-form-item label="解析" prop="analysis">
             <div><el-input v-model="questionData.analysis" placeholder="请输入解析"></el-input></div>
           </el-form-item>
         </div>
         <div v-show="active === 1">
-          <el-form-item label="题型">
-          <el-select v-model="type" placeholder="请选择题型" clearable style="width:100%">
+          <el-form-item label="题型" prop="type">
+          <el-select v-model="questionData.type" placeholder="请选择题型" clearable style="width:100%">
             <el-option
               v-for="item in types"
               :key="item.value"
@@ -30,8 +30,8 @@
             </el-option>
           </el-select>
           </el-form-item>
-          <el-form-item label="分类">
-          <el-select v-model="categoriy" placeholder="请选择分类" clearable style="width:100%">
+          <el-form-item label="分类" prop="categoriy">
+          <el-select v-model="questionData.categoriy" placeholder="请选择分类" clearable style="width:100%">
             <el-option
               v-for="item in categories"
               :key="item.value"
@@ -40,8 +40,8 @@
             </el-option>
           </el-select>
           </el-form-item>
-          <el-form-item label="难度">
-          <el-select v-model="level" placeholder="请选择难度" clearable style="width:100%">
+          <el-form-item label="难度" prop="level">
+          <el-select v-model="questionData.level" placeholder="请选择难度" clearable style="width:100%">
             <el-option
               v-for="item in levels"
               :key="item.value"
@@ -59,7 +59,7 @@
         <el-button type="primary" @click="backward" :style="{float:'left'}" v-if="active > 0">上一步</el-button>
         <el-button @click="cancel">取 消</el-button>
         <el-button type="primary" v-if="active < 2" @click="next">下一步</el-button>
-        <el-button type="primary" v-if="active == 2">完成</el-button>
+        <el-button type="primary" v-if="active == 2" @click="next">完成</el-button>
       </div>
     </el-dialog>
   </div>
@@ -74,18 +74,19 @@
 <script>
 /* const stepForms = [[], ['type', 'category', 'level'], ['option']] */
 export default {
-  name: 'EditDialog',
+  name: 'edit-dialog',
   data () {
     return {
       active: 0,
-      visible: true,
+      visible: false,
       questionData: {
         content: '',
-        analysis: ''
+        analysis: '',
+        type: [],
+        categoriy: [],
+        level: []
       },
-      type: [],
-      categoriy: [],
-      level: [],
+
       types: [{
         value: '选项1',
         label: '单选题'
@@ -121,7 +122,21 @@ export default {
       {
         value: '选项3',
         label: '易'
-      }]
+      }],
+      rules: {
+        content: [{
+          required: true, message: '请输入内容', trigger: 'blur'
+        }],
+        type: [{
+          required: true, message: '请选择题型', trigger: 'change'
+        }],
+        categoriy: [{
+          required: true, message: '请选择分类', trigger: 'change'
+        }],
+        level: [{
+          required: true, message: '请选择难度', trigger: 'change'
+        }]
+      }
     }
   },
   methods: {
@@ -132,8 +147,11 @@ export default {
       this.visible = false
       this.active = 0
     },
+    initShow () {
+      this.visible = true
+    },
     next () {
-      if (this.active++ > 2) this.active = 0
+      this.active++
 
       /* const { form: { validateFields } } = this
       const active = step + 1
@@ -198,9 +216,6 @@ export default {
         })
         .catch(_ => {})
     }
-  },
-  create () {
-    this.visible = true
   }
 }
 </script>

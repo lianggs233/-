@@ -87,7 +87,7 @@ export default {
       this.makeCode(this.identifyCodes, 4)
     },
     makeCode (o, l) {
-      for (let i = 0; i < l; i++) {
+      for (let i = o; i < l; i++) {
         this.identifyCode += this.identifyCodes[this.randomNum(0, this.identifyCodes.length)]
       }
     },
