@@ -5,7 +5,7 @@
       :visible.sync="visible"
       width="width"
       :before-close="dialogBeforeClose">
-    <el-form :model="questionData" :label-position="labelPosition" :rules="rules" label-width="60px" label="left">
+    <el-form :model="questionData" :label-position="labelPosition" :rules="rules" label-width="auto" label="left">
         <el-steps :active="active"  finish-status="success" class="step">
           <el-step title="问题内容"></el-step>
           <el-step title="问题分类"></el-step>
@@ -52,7 +52,19 @@
           </el-form-item>
         </div>
         <div v-show="active === 2">
-
+          <el-form-item label="创建选项">
+            <el-input
+            v-model="questionData.option"
+            v-if="type !== 判断"
+            placeholder="输入内容后按Enter添加到下方选项列表"
+            @pressEnter= "addOption()"
+            ></el-input>
+          </el-form-item>
+          <el-form-item label="设置答案">
+            <el-select v-model="questionData.option" placeholder="请选择单选题答案">
+              <el-option label="label" value="value"></el-option>
+            </el-select>
+          </el-form-item>
         </div>
       </el-form>
       <div slot="footer">
@@ -82,9 +94,12 @@ export default {
       questionData: {
         content: '',
         analysis: '',
-        type: [],
-        categoriy: [],
-        level: []
+        type: '',
+        categoriy: '',
+        level: '',
+        options: [],
+        answerOption: '',
+        answerOptions: []
       },
 
       types: [{
@@ -208,13 +223,6 @@ export default {
         } else {
         }
       }) */
-    },
-    handleClose (done) {
-      this.$confirm('确认关闭？')
-        .then(_ => {
-          done()
-        })
-        .catch(_ => {})
     }
   }
 }

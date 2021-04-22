@@ -4,6 +4,10 @@ import Login from '@/layout/Login'
 import Register from '@/layout/Register'
 import Home from '@/layout/Home'
 import Question from '@/views/Question'
+import Parsonal from '@/views/Parsonal'
+import Course from '@/views/Course'
+import QueryTest from '@/views/QueryTest'
+import QueryResults from '@/views/QueryResults'
 
 Vue.use(Router)
 
@@ -25,9 +29,29 @@ export default new Router({
       component: Home,
       children: [
         {
-          path: 'Question',
-          name: 'Question',
+          path: 'question',
+          name: 'question',
           component: Question
+        },
+        {
+          path: 'course',
+          name: 'course',
+          component: Course
+        },
+        {
+          path: 'querytest',
+          name: 'querytest',
+          component: QueryTest
+        },
+        {
+          path: 'queryresults',
+          name: 'queryresults',
+          component: QueryResults
+        },
+        {
+          path: 'parsonal',
+          name: 'parsonal',
+          component: Parsonal
         }
       ]
     }

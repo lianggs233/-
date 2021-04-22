@@ -5,7 +5,7 @@
     <el-dropdown>
       <el-button class="el-icon-user" circle> </el-button>
       <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item>个人资料</el-dropdown-item>
+        <el-dropdown-item @click.native="doParsonal">个人资料</el-dropdown-item>
         <el-dropdown-item @click.native="dialogVisible = true">注销</el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
@@ -39,6 +39,9 @@ export default {
   methods: {
     doBack () {
       this.$router.push({ path: '/' })
+    },
+    doParsonal () {
+      this.$router.push({path: '/home/parsonal'})
     },
     handleClose (done) {
       this.$confirm('确认关闭？')

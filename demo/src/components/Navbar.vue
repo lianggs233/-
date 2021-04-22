@@ -11,7 +11,7 @@
       router
     ><!-- default-active激活index  router是否用vue-router模式，以index做完path跳转 -->
       <el-menu-item index="/home">
-        <i class="el-icon-house"></i>
+        <i class="el-icon-s-home"></i>
         <span slot="title">首页</span>
       </el-menu-item>
       <el-submenu index="1">
@@ -28,22 +28,22 @@
           <i class="el-icon-d-caret"></i>
           <span slot="title">试卷管理</span>
         </template>
-          <el-menu-item index="/home">生成试卷</el-menu-item>
-          <el-menu-item index="/home">查询试卷</el-menu-item>
+          <el-menu-item index="/home">试卷卡片</el-menu-item>
+          <el-menu-item index="/home/querytest">查询试卷</el-menu-item>
       </el-submenu>
       <el-submenu index="3">
         <template slot="title">
           <i class="el-icon-d-caret"></i>
           <span slot="title">课程管理</span>
         </template>
-          <el-menu-item index="/home">查询课程</el-menu-item>
+          <el-menu-item index="/home/course">查询课程</el-menu-item>
       </el-submenu>
       <el-submenu index="4">
         <template slot="title">
           <i class="el-icon-d-caret"></i>
           <span slot="title">成绩管理</span>
         </template>
-          <el-menu-item index="/home">查询成绩</el-menu-item>
+          <el-menu-item index="/home/queryresults">查询成绩</el-menu-item>
       </el-submenu>
       <el-submenu index="5">
         <template slot="title">
