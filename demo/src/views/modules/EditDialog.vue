@@ -55,7 +55,7 @@
           <el-form-item label="创建选项">
             <el-input
             v-model="questionData.option"
-            v-if="type !== 判断"
+            v-if="type !== 3"
             placeholder="输入内容后按Enter添加到下方选项列表"
             @pressEnter= "addOption()"
             ></el-input>

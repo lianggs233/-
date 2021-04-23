@@ -3,13 +3,11 @@
     <el-card>
       <div slot="header">
         <el-row :gutter="5">
-        <el-col :span="12" :style="{float:'left'}">
+        <el-col :span="12" style="text-align:start;">
           <el-button type="primary" size='small' icon="el-icon-upload" @click="showUpload">上传</el-button>
           <el-button type="primary" size="small" icon="el-icon-folder-add"  @click="showModal">新建</el-button>
         </el-col>
         <el-col :span="12"  style="text-align:end;">
-        <el-input v-model="search" placeholder="Search" size='small'  prefix-icon="el-icon-search" style="width:50%;"></el-input>
-            <el-button size='small' type="info" icon="el-icon-arrow-down">选择</el-button>
             <el-button type="info" size='small' icon="el-icon-download">下载</el-button>
         </el-col>
          </el-row>
@@ -68,7 +66,7 @@
             label="操作"
             width="180">
           <template>
-            <el-button type="primary" size="small" @click="showDetail()">查看</el-button>
+            <el-button type="primary" size="small" @click="showDetail(record)">查看</el-button>
             <el-button type="primary" size="small">编辑</el-button>
           </template>
           </el-table-column>
@@ -82,14 +80,11 @@
 </template>
 
 <script>
-import EditDialog from './modules/EditDialog'
-import FileUpload from './modules/FileUpload'
-import QuestionDetails from './modules/QuestionDetails'
 export default {
   components: {
-    EditDialog,
-    FileUpload,
-    QuestionDetails
+    EditDialog: () => import('./modules/EditDialog'),
+    FileUpload: () => import('./modules/FileUpload'),
+    QuestionDetails: () => import('./modules/QuestionDetails')
   },
   data () {
     return {
@@ -113,7 +108,7 @@ export default {
     },
     showUpload () {
       this.$nextTick(() => {
-        this.$refs.fileuploadModal.initShow()
+        this.$refs.fileuploadModal.initShow1()
       })
     },
     showDetail (record) {

@@ -8,6 +8,9 @@ import Parsonal from '@/views/Parsonal'
 import Course from '@/views/Course'
 import QueryTest from '@/views/QueryTest'
 import QueryResults from '@/views/QueryResults'
+import TestCard from '@/views/TestCard'
+import Echarts from '@/components/Echarts'
+import Newtest from '@/views/modules/Newtest'
 
 Vue.use(Router)
 
@@ -49,9 +52,24 @@ export default new Router({
           component: QueryResults
         },
         {
+          path: 'testcard',
+          name: 'testcard',
+          component: TestCard
+        },
+        {
           path: 'parsonal',
           name: 'parsonal',
           component: Parsonal
+        },
+        {
+          path: 'echarts',
+          name: 'echarts',
+          component: Echarts
+        },
+        {
+          path: 'newtest',
+          name: 'newtest',
+          component: Newtest
         }
       ]
     }

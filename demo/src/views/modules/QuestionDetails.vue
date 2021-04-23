@@ -25,7 +25,7 @@
       </el-form>
     </div>
     <div slot="footer">
-      <el-button @click="visible = false">关闭</el-button>
+      <el-button @click="visable = false">关闭</el-button>
     </div>
   </el-dialog>
 </template>
@@ -34,10 +34,10 @@
 export default {
   data () {
     return {
-      visable: false,
       question: {},
       options: [],
-      answerOption: ''
+      answerOption: '',
+      visable: false
     }
   },
   methods: {

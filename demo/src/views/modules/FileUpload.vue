@@ -2,7 +2,7 @@
     <el-dialog
       title="上传题库"
       :visible.sync="avisible"
-      width="width"
+      width="400px"
       :before-close="dialogBeforeClose">
         <el-upload
           class="upload-demo"

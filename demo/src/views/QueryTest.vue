@@ -3,13 +3,11 @@
     <el-card>
       <div slot="header">
         <el-row :gutter="5">
-        <el-col :span="12" :style="{float:'left'}">
-          <el-button type="primary" size='small' icon="el-icon-folder-add">新建</el-button>
-          <el-button type="primary" size="small" icon="el-icon-refresh" >刷新</el-button>
+        <el-col :span="12" style="text-align:start;">
+          <el-button type="primary" size='small' icon="el-icon-folder-add" @click="showmodal">新建</el-button>
+          <el-button type="primary" size="small" icon="el-icon-refresh" @click="refresh">刷新</el-button>
         </el-col>
         <el-col :span="12"  style="text-align:end;">
-        <el-input v-model="search" placeholder="Search" size='small'  prefix-icon="el-icon-search" style="width:50%;"></el-input>
-            <el-button size='small' type="info" icon="el-icon-arrow-down">选择</el-button>
             <el-button type="info" size='small' icon="el-icon-download">下载</el-button>
         </el-col>
          </el-row>
@@ -60,11 +58,15 @@
         </el-table>
       </div>
     </el-card>
+    <Newtest ref="newtest"/>
   </div>
 </template>
 
 <script>
 export default {
+  components: {
+    Newtest: () => import('./modules/Newtest')
+  },
   data () {
     return {
       querytest: {
@@ -80,6 +82,14 @@ export default {
     showDetail (record) {
       this.$nextTick(() => {
         this.$refs.questionDetail.edit(record)
+      })
+    },
+    refresh () {
+      this.$router.go(0)
+    },
+    showmodal () {
+      this.$nextTick(() => {
+        this.$refs.newtest.initshow()
       })
     }
   }

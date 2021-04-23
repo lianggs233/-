@@ -19,7 +19,7 @@
           <i class="el-icon-d-caret"></i>
           <span slot="title">题目管理</span>
         </template>
-        <el-menu-item index="/home/Question">
+        <el-menu-item index="/home/question">
           <template slot="title">题库管理</template>
         </el-menu-item>
       </el-submenu>
@@ -28,7 +28,7 @@
           <i class="el-icon-d-caret"></i>
           <span slot="title">试卷管理</span>
         </template>
-          <el-menu-item index="/home">试卷卡片</el-menu-item>
+          <el-menu-item index="/home/testcard">试卷卡片</el-menu-item>
           <el-menu-item index="/home/querytest">查询试卷</el-menu-item>
       </el-submenu>
       <el-submenu index="3">
@@ -50,7 +50,7 @@
           <i class="el-icon-d-caret"></i>
           <span slot="title">AI分析</span>
         </template>
-          <el-menu-item index="/home">成绩分析统计</el-menu-item>
+          <el-menu-item index="/home/echarts">成绩分析统计</el-menu-item>
           <el-menu-item index="/home">试卷分析</el-menu-item>
           <el-menu-item index="/home">AI提高</el-menu-item>
       </el-submenu>
