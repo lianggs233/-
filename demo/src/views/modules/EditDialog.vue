@@ -104,15 +104,28 @@ export default {
 
       types: [{
         value: '选项1',
-        label: '单选题'
+        label: '单选题',
+        type: '1'
       },
       {
         value: '选项2',
-        label: '多选题'
+        label: '多选题',
+        type: '2'
       },
       {
         value: '选项3',
-        label: '判断题'
+        label: '判断题',
+        type: '3'
+      },
+      {
+        value: '选项4',
+        label: '填空题',
+        type: '4'
+      },
+      {
+        value: '选项5',
+        label: '问答题',
+        type: '5'
       }],
       categories: [{
         value: '选项1',

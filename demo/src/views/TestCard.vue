@@ -2,55 +2,28 @@
   <div>
     <el-card>
       <div slot="header">考试卡片</div>
-      <div>
-        <el-row :gutter="10">
-          <el-col :span="8">
-            <el-card>
-              <div slot="header" class="clearfix">
-                <span>考试名称</span>
-                <el-button type="text" style="float: right; padding: 3px 0">参加考试</el-button>
-              </div>
-              <div v-for="o in 4" :key="o">
-                {{'考试内容 ' + o }}
-                </div>
-            </el-card>
-          </el-col>
-          <!-- <el-col :span="8">
-            <el-card>
-              <div slot="header" class="clearfix">
-                <span>考试名称</span>
-                <el-button type="text" style="float: right; padding: 3px 0">参加考试</el-button>
-              </div>
-              <div v-for="o in 4" :key="o">
-                {{'考试内容 ' + o }}
-                </div>
-            </el-card>
-          </el-col>
-          <el-col :span="8">
-            <el-card>
-              <div slot="header" class="clearfix">
-                <span>考试名称</span>
-                <el-button type="text" style="float: right; padding: 3px 0">参加考试</el-button>
-              </div>
-              <div v-for="o in 4" :key="o">
-                {{'考试内容 ' + o }}
-                </div>
-            </el-card>
-          </el-col> -->
-        </el-row>
+      <div class="testcard">
+          <Cards v-for="o in 9" :key="o" />
       </div>
     </el-card>
   </div>
 </template>
 
 <style>
-  .clearfix:before,
-  .clearfix:after {
-    display: table;
-    content: "";
-  }
-  .clearfix:after {
-    clear: both
-  }
-
+.testcard{
+  display: grid;
+  grid-template-columns: repeat(3,33.33%);
+  grid-template-rows: repeat(3,200px);
+}
 </style>
+
+<script>
+export default {
+  components: {
+    Cards: () => import('./modules/Cards')
+  },
+  data () {
+    return {}
+  }
+}
+</script>
