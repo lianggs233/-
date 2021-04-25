@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="exam">
   <el-card>
     <div slot="header">
       <el-row :gutter="10">
@@ -13,9 +13,10 @@
         <td v-html="item"></td>
     </div>
     <div style="margin-top:20px;">
-      <el-row :gutter="10">
-        <el-col :span="20"> <el-input v-model="a" placeholder="请输入答案"></el-input></el-col>
-        <el-col :span="4"><el-button type="primary">提交</el-button></el-col>
+      <el-row :gutter="5">
+        <el-col :span="20"> <el-input v-model="a" placeholder="请输入答案" type="textarea"></el-input></el-col>
+        <el-col :span="2"><el-button type="primary" @click="qqq">提  交</el-button></el-col>
+        <el-col :span="2"><el-button type="primary">下一题</el-button></el-col>
       </el-row>
     </div>
   </el-card>
@@ -23,7 +24,9 @@
 </template>
 
 <style>
-
+.exam{
+  margin-top: 20px;
+}
 </style>
 
 <script>
@@ -32,6 +35,7 @@ export default {
     return {
       nowtime: '',
       title: 'asda',
+      a: '',
       content: {
         question: 'adasdasda',
         options: [{
@@ -57,6 +61,9 @@ export default {
         this.nowtime = new Date().toLocaleString()
       }, 1000)
     }
+    /* qqq () {
+      console.log('a')
+    } */
   },
   created () {
     this.getTime()

@@ -16,6 +16,7 @@
     "element-ui": "^2.15.1",
     "less": "^4.1.1",
     "less-loader": "^8.0.0",
+    "qs.js": "^0.1.12",
     "vue": "^2.5.2",
     "vue-ref": "^2.0.0",
     "vue-resource": "^1.5.2",

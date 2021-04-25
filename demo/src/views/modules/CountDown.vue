@@ -6,6 +6,7 @@
 export default {
   data () {
     return {
+      time: '2021-4-26 18:20:34',
       end: '',
       timer: ''
     }
@@ -27,9 +28,9 @@ export default {
   methods: {
     test () {
       /* 处理倒计时 */
-      /* let endtime = new Date(this.time).getTime()
-      let nowtime = new Date().getTime */
-      this.end = Math.floor((3600) / 1000)
+      let endtime = new Date(this.time).getTime()
+      let nowtime = new Date().getTime
+      this.end = Math.floor((endtime - nowtime) / 1000)
       if (this.timer) clearInterval(this.timer)
       this.timer = setInterval(() => {
         this.end--

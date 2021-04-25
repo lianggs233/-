@@ -13,7 +13,7 @@
       </div>
       <div class="table1">
         <el-table
-          :data="courseData"
+          :data="t_subject"
           border
           style="width: 100%">
           <el-table-column
@@ -22,22 +22,22 @@
             width="50">
           </el-table-column>
           <el-table-column
-            prop="name"
+            prop="coursename"
             label="课程名"
             width="120">
           </el-table-column>
           <el-table-column
-            prop="grade"
+            prop="major"
+            label="院系"
+            width="120">
+          </el-table-column>
+          <el-table-column
+            prop="coursegrade"
             label="年级"
             width="120">
           </el-table-column>
           <el-table-column
-            prop="analysis"
-            label="解析"
-            width="240">
-          </el-table-column>
-          <el-table-column
-            prop="date"
+            prop="updatetime"
             label="日期"
             width="145">
           </el-table-column>
@@ -59,10 +59,11 @@
 export default {
   data () {
     return {
-      courseData: {
-        name: '',
-        grade: '',
-        data: ''
+      t_subject: {
+        coursename: '',
+        major: '',
+        coursegarde: '',
+        updatetime: ''
       }
     }
   },
@@ -75,6 +76,15 @@ export default {
     refresh () {
       this.$router.go(0)
     }
+  },
+  created () {
+    this.$axios.get('/', {
+      t_subject: {}
+    }).then(function (response) {
+      console.log(response)
+    }).catch(function (error) {
+      console.log(error)
+    })
   }
 }
 </script>

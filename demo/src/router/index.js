@@ -11,7 +11,7 @@ import QueryResults from '@/views/QueryResults'
 import TestCard from '@/views/TestCard'
 import Echarts from '@/components/Echarts'
 import Newtest from '@/views/modules/Newtest'
-import Examination from '@/views/modules/Examination'
+import Test from '@/views/Test'
 
 Vue.use(Router)
 
@@ -73,9 +73,9 @@ export default new Router({
           component: Newtest
         },
         {
-          path: 'exam',
-          name: 'exam',
-          component: Examination
+          path: 'test',
+          name: 'test',
+          component: Test
         }
       ]
     }
