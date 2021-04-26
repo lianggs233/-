@@ -13,7 +13,7 @@
       </div>
       <div class="table1">
         <el-table
-          :data="t_subject"
+          :data="subject"
           border
           style="width: 100%">
           <el-table-column
@@ -59,12 +59,14 @@
 export default {
   data () {
     return {
-      t_subject: {
-        coursename: '',
-        major: '',
-        coursegarde: '',
-        updatetime: ''
-      }
+      subject: [
+        {
+          coursename: '',
+          major: '',
+          coursegarde: '',
+          updatetime: ''
+        }
+      ]
     }
   },
   methods: {
@@ -78,8 +80,8 @@ export default {
     }
   },
   created () {
-    this.$axios.get('/', {
-      t_subject: {}
+    this.$axios.get('/localhost:8080/subject/list', {
+      subject: [{}]
     }).then(function (response) {
       console.log(response)
     }).catch(function (error) {

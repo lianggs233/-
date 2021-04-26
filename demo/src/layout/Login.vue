@@ -7,10 +7,10 @@
             <img src="@/assets/css/logo.png" alt="" class="img1" />
           </div>
         </div>
-        <el-form ref="user" :model="user" :rules="rules">
-          <el-form-item  prop="username">
+        <el-form  :model="user" :rules="rules">
+          <el-form-item  prop="loginNumber">
             <el-input
-              v-model="user.username"
+              v-model="user.loginNumber"
               placeholder="请输入用户名"
               prefix-icon="el-icon-user-solid"
             ></el-input>
@@ -22,7 +22,8 @@
               prefix-icon="el-icon-warning"
               type="password"
               show-password
-            ></el-input>
+            >
+            </el-input>
           </el-form-item>
           <el-form-item  prop="seccode">
             <el-row :gutter="10">
@@ -53,75 +54,51 @@
 </template>
 
 <script>
-import Identify from '@/components/Identify'
+/* import Identify from '@/components/Identify' */
 export default {
-  components: {
+  /* components: {
     Identify
-  },
+  }, */
   data () {
     return {
       user: {
-        username: '',
-        password: '',
-        seccode: ''
+        loginNumber: '',
+        password: ''
+        // seccode: ''
       },
       identifyCodes: '123456789abcdefghijklmnopqrstuvwxyz',
       identifyCode: '',
       rules: {
-        username: [
+        loginNumber: [
           {required: true, message: '请输入用户名', trigger: 'blur'}
         ],
         password: [
           {required: true, message: '请输入密码', trigger: 'blur'}
-        ],
-        seccode: [
-          {required: true, message: '请输入验证码', trigger: 'blur'}
         ]
+        /* seccode: [
+          {required: true, message: '请输入验证码', trigger: 'blur'}
+        ] */
       }
     }
   },
   methods: {
-    /* 重置验证码 */
-    rerfreshCode () {
-      this.identifyCode = ''
-      this.makeCode(this.identifyCodes, 4)
-    },
-    makeCode (o, l) {
-      for (let i = o; i < l; i++) {
-        this.identifyCode += this.identifyCodes[this.randomNum(0, this.identifyCodes.length)]
-      }
-    },
-    randomNum (min, max) {
-      return Math.floor(Math.random() * (max - min) + min)
-    },
     doLogin () {
-      if (this.user.seccode.toLowerCase() !== this.identifyCode.toLowerCase()) {
-        this.$message.error('请输入正确验证码')
-        this.rerfreshCode()
-        return
-      }
-      this.$refs.user.validate(valid => {
-        if (valid) {
-          /* 登录 */
-
-          this.login({
-            vm: this,
-            username: this.user.username,
-            password: this.user.password
-          })
-        } else {
-          this.$message.error('表单验证失败')
-        }
+      this.$nextTick(() => {
+        this.$axios.post('/user/login', {loginNumber: this.user.loginNumber, password: this.user.password}// 没写this
+        ).then(function (response) {
+          console.log(response)
+        }).catch(function (error) {
+          console.log(error)
+        })
       })
     },
     doRegister () {
       this.$router.push({ path: '/register' })
     }
   },
+  created () {
+  },
   mounted () {
-    /* 初始化验证码 */
-    this.identifyCode = ''
-    this.makeCode(this.identifyCodes, 4)
   }
 }
 </script>
