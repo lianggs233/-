@@ -25,19 +25,6 @@
             >
             </el-input>
           </el-form-item>
-          <el-form-item  prop="seccode">
-            <el-row :gutter="10">
-              <el-col :span="18">
-            <el-input
-              v-model="user.seccode"
-              placeholder="请输入验证码"
-              prefix-icon="el-icon-magic-stick"
-              @keydown.enter.native="doLogin"
-            ></el-input>
-            </el-col>
-            <el-col :span="6"><Identify :idetifyCode="identifyCode"></Identify></el-col>
-            </el-row>
-          </el-form-item>
           <el-form-item class="item_left">
             <el-button type="primary" class="btn1" @click="doLogin">登录</el-button>
           </el-form-item>
@@ -54,17 +41,12 @@
 </template>
 
 <script>
-/* import Identify from '@/components/Identify' */
 export default {
-  /* components: {
-    Identify
-  }, */
   data () {
     return {
       user: {
         loginNumber: '',
         password: ''
-        // seccode: ''
       },
       identifyCodes: '123456789abcdefghijklmnopqrstuvwxyz',
       identifyCode: '',
@@ -75,21 +57,19 @@ export default {
         password: [
           {required: true, message: '请输入密码', trigger: 'blur'}
         ]
-        /* seccode: [
-          {required: true, message: '请输入验证码', trigger: 'blur'}
-        ] */
       }
     }
   },
   methods: {
     doLogin () {
-      this.$nextTick(() => {
-        this.$axios.post('/user/login', {loginNumber: this.user.loginNumber, password: this.user.password}// 没写this
-        ).then(function (response) {
-          console.log(response)
-        }).catch(function (error) {
-          console.log(error)
-        })
+      this.$axios.post('/user/login', {loginNumber: this.user.loginNumber, password: this.user.password}
+      ).then(function (response) {
+        console.log(response)
+        alert('登录成功')
+        this.$router.push({path: '/home'})
+      }).catch(function (error) {
+        console.log(error)
+        alert('登录失败')
       })
     },
     doRegister () {
@@ -108,8 +88,7 @@ export default {
   height: 100%;
   background-color: #545c64;
   padding-top: 8%;
-/*   padding-right: 0px !important; */
-  overflow-y: hidden;
+  overflow-y: scroll;
 }
 
 .login_container {

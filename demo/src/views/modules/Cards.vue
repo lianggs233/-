@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     goExam () {
-      this.$router.push({path: '/home/test'})
+      this.$router.push({path: '/home/test', name: 'test', params: 'id:1'})
     }
   }
 }
