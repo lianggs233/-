@@ -69,6 +69,16 @@ export default {
     refresh () {
       this.$router.go(0)
     }
+  },
+  created () {
+    let vm = this
+    this.$axios.get('/'
+    ).then(function (res) {
+      vm.querytest = res.data
+      console.log(vm.querytest)
+    }).catch(function () {
+      alert('连接数据库失败')
+    })
   }
 }
 </script>

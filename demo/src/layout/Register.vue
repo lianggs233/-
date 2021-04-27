@@ -1,13 +1,13 @@
 <template>
-  <div class="login">
-    <div class="login_container" align="center">
+  <div class="register">
+    <div class="register_container" align="center">
       <el-card>
         <div slot="header" class="clearfix">
           <h1>注册</h1>
         </div>
         <el-form :model="user" :rules="rules">
           <el-row :gutter="10">
-            <el-col :span="12">
+            <el-col :span="8">
               <el-form-item prop="name">
                 <el-input
                 v-model="user.name"
@@ -15,7 +15,7 @@
                 ></el-input>
               </el-form-item>
             </el-col>
-            <el-col :span="12">
+            <el-col :span="8">
               <el-form-item  prop="password">
                 <el-input
                 v-model="user.password"
@@ -23,19 +23,8 @@
               ></el-input>
             </el-form-item>
             </el-col>
-          </el-row>
-          <el-row :gutter="10">
-            <el-col :span="12">
+            <el-col :span="8">
               <el-form-item prop="realname">
-                <el-input
-                v-model="user.realname"
-                placeholder="请输入真名"
-                >
-                </el-input>
-              </el-form-item>
-            </el-col>
-            <el-col :span="12">
-              <el-form-item prop="role">
                 <el-input
                 v-model="user.role"
                 placeholder="请输入职业"
@@ -45,7 +34,16 @@
             </el-col>
           </el-row>
           <el-row :gutter="10">
-            <el-col :span="12">
+            <el-col :span="8">
+              <el-form-item prop="role">
+                <el-input
+                v-model="user.realname"
+                placeholder="请输入真名"
+                >
+                </el-input>
+              </el-form-item>
+            </el-col>
+            <el-col :span="4">
               <el-form-item prop="age">
                 <el-input
                 v-model="user.age"
@@ -54,7 +52,7 @@
                 </el-input>
               </el-form-item>
             </el-col>
-            <el-col :span="12">
+            <el-col :span="4">
               <el-form-item prop="gender">
                 <el-input
                 v-model="user.gender"
@@ -63,9 +61,7 @@
                 </el-input>
               </el-form-item>
             </el-col>
-          </el-row>
-          <el-row :gutter="10">
-            <el-col :span="12">
+            <el-col :span="8">
               <el-form-item prop="loginNumber">
                 <el-input
                 v-model="user.loginNumber"
@@ -74,7 +70,9 @@
                 </el-input>
               </el-form-item>
             </el-col>
-            <el-col :span="12">
+          </el-row>
+          <el-row :gutter="10">
+            <el-col :span="8">
               <el-form-item prop="major">
                 <el-input
                 v-model="user.major"
@@ -83,9 +81,7 @@
                 </el-input>
               </el-form-item>
             </el-col>
-          </el-row>
-          <el-row :gutter="10">
-            <el-col :span="12">
+            <el-col :span="8">
               <el-form-item prop="grade">
                 <el-input
                 v-model="user.grade"
@@ -94,7 +90,7 @@
                 </el-input>
               </el-form-item>
             </el-col>
-            <el-col :span="12">
+            <el-col :span="8">
               <el-form-item prop="myclass">
                 <el-input
                 v-model="user.myclass"
@@ -104,32 +100,36 @@
               </el-form-item>
             </el-col>
           </el-row>
-          <el-form-item  prop="phone">
-            <el-input
-              v-model="user.phonenum"
-              placeholder="手机号"
-            ></el-input>
-          </el-form-item>
-          <el-form-item prop='email'>
-            <el-input
-            v-model="user.email"
-            placeholder="邮箱"
-            >
-            </el-input>
-          </el-form-item>
-          <el-form-item  prop="code">
-            <el-row :gutter="5">
-              <el-col :span="19">
-              <el-input
-              v-model="user.code"
-              placeholder="请输入验证码"
-            ></el-input>
+          <el-row :gutter="10">
+            <el-col :span="8">
+              <el-form-item  prop="phone">
+                <el-input
+                v-model="user.phonenum"
+                placeholder="手机号"
+                ></el-input>
+              </el-form-item>
             </el-col>
-            <el-col :span="5">
-              <el-button @click="doSend">点击获取</el-button>
+            <el-col :span="8">
+              <el-form-item prop='email'>
+                <el-input
+                v-model="user.email"
+                placeholder="邮箱"
+                >
+                </el-input>
+              </el-form-item>
             </el-col>
-            </el-row>
-          </el-form-item>
+            <el-col :span="4">
+              <el-form-item  prop="code">
+                <el-input
+                v-model="user.code"
+                placeholder="请输入验证码"
+                ></el-input>
+              </el-form-item>
+          </el-col>
+          <el-col :span="4">
+            <el-button @click="doSend">点击获取</el-button>
+            </el-col>
+          </el-row>
           <el-form-item>
             <el-button type="primary" class="btn1" @click="doRegister">注册</el-button>
           </el-form-item>
@@ -201,7 +201,12 @@ export default {
         ],
         phone: [
           {required: true, message: '请输入手机号', trigger: 'blur'},
-          {message: '请输入正确的手机号', pattern: /^1[3-9]\d{9}$/, trigger: 'blur'}
+          {
+            type: 'string',
+            message: '手机号格式不正确',
+            pattern: /^1[3-9]\d{9}$/,
+            trigger: 'blur'
+          }
         ],
         code: [
           {required: true, message: '请输入验证码', trigger: 'blur'}
@@ -250,14 +255,15 @@ export default {
 </script>
 
 <style>
-.login {
+.register {
   min-height: 100%;
   background-color: #545c64;
+  padding-top: 8%;
   overflow: scroll;
 }
 
-.login_container {
-  width: 500px;
+.register_container {
+  width: 900px;
   background-color: #fff;
   margin: auto;
 }

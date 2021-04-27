@@ -116,6 +116,16 @@ export default {
         this.$refs.questionDetail.edit(record)
       })
     }
+  },
+  created () {
+    let vm = this
+    this.$axios.get('/'
+    ).then(function (res) {
+      vm.questionData = res.data
+      console.log(vm.questionData)
+    }).catch(function () {
+      alert('连接数据库失败')
+    })
   }
 }
 </script>

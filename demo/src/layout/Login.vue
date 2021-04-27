@@ -48,8 +48,6 @@ export default {
         loginNumber: '',
         password: ''
       },
-      identifyCodes: '123456789abcdefghijklmnopqrstuvwxyz',
-      identifyCode: '',
       rules: {
         loginNumber: [
           {required: true, message: '请输入用户名', trigger: 'blur'}
@@ -62,20 +60,18 @@ export default {
   },
   methods: {
     doLogin () {
+      let vm = this
       this.$axios.post('/user/login', {loginNumber: this.user.loginNumber, password: this.user.password}
-      ).then(function (token) {
+      ).then(function () {
         this.$axios.get('/user/login', {
-          params: token
-        }).then(function () {
-          this.$store.state.localToken = this.params
+        }).then(function (res) {
+          vm.$store.commit('edit', res.data)
           alert('登录成功')
-          console.log(this.$store.state.localToken)
-          this.$router.push({path: '/home'})
+          console.log(vm.$store.state.localToken)
+          vm.$router.push({path: '/home'})
         }).catch(function () {
           alert('登录失败')
         })
-      }).catch(function () {
-        alert('登录失败')
       })
     },
     doRegister () {

@@ -83,8 +83,7 @@ export default {
     let vm = this
     this.$axios.get('/subject/list'
     ).then(function (res) {
-      vm.subject = res.subject
-      console.log(res)
+      vm.subject = res.data
     }).catch(function (error) {
       console.log(error)
     })

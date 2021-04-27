@@ -8,7 +8,11 @@ const store = new Vuex.Store({
     // 存放的键值对就是所要管理的状态
     localToken: ''
   },
-  mutations: {},
+  mutations: {
+    edit (state, arg) {
+      state.localToken = arg
+    }
+  },
   actions: {},
   getters: {}
 })
