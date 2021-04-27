@@ -63,12 +63,18 @@ export default {
   methods: {
     doLogin () {
       this.$axios.post('/user/login', {loginNumber: this.user.loginNumber, password: this.user.password}
-      ).then(function (response) {
-        console.log(response)
-        alert('登录成功')
-        this.$router.push({path: '/home'})
-      }).catch(function (error) {
-        console.log(error)
+      ).then(function (token) {
+        this.$axios.get('/user/login', {
+          params: token
+        }).then(function () {
+          this.$store.state.localToken = this.params
+          alert('登录成功')
+          console.log(this.$store.state.localToken)
+          this.$router.push({path: '/home'})
+        }).catch(function () {
+          alert('登录失败')
+        })
+      }).catch(function () {
         alert('登录失败')
       })
     },
