@@ -80,10 +80,11 @@ export default {
     }
   },
   created () {
-    this.$axios.get('/localhost:8080/subject/list', {
-      subject: [{}]
-    }).then(function (response) {
-      console.log(response)
+    let vm = this
+    this.$axios.get('/subject/list'
+    ).then(function (res) {
+      vm.subject = res.subject
+      console.log(res)
     }).catch(function (error) {
       console.log(error)
     })
