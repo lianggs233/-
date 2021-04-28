@@ -6,7 +6,20 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
     // 存放的键值对就是所要管理的状态
-    localToken: ''
+    localToken: '',
+    name: '',
+    realname: '',
+    password: '',
+    role: '',
+    age: '',
+    gender: '',
+    loginNumber: '',
+    major: '',
+    grade: '',
+    myclass: '',
+    email: '',
+    phone: '',
+    code: ''
   },
   mutations: {
     edit (state, arg) {

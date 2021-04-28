@@ -30,11 +30,26 @@
 <script>
 export default {
   data () {
-    return {}
+    return {
+      test: [{
+        id: 1,
+        title: '语文',
+        contont: [{
+          'a': '作文'
+        },
+        {
+          'b': '古诗'
+        },
+        {
+          'c': '阅读理解'
+        }]
+      }]
+    }
   },
   methods: {
     goExam () {
-      this.$router.push({path: '/home/test', name: 'test', params: 'id:1'})
+      const _id = this.contont.id
+      this.$router.push({path: '/home/test', name: 'test', params: _id})
     }
   }
 }

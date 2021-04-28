@@ -1,8 +1,7 @@
 import request from '@/untils/request'
 
 export function postLoginApi (data) {
-  request.post('/user/login',
-  /* params: */ data
+  request.post('/user/login', data
   ).then(function (response) {
     console.log(response)
     alert('登录成功')

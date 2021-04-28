@@ -11,7 +11,7 @@
           <el-form-item  prop="loginNumber">
             <el-input
               v-model="user.loginNumber"
-              placeholder="请输入用户名"
+              placeholder="请输入学号"
               prefix-icon="el-icon-user-solid"
             ></el-input>
           </el-form-item>
@@ -50,7 +50,7 @@ export default {
       },
       rules: {
         loginNumber: [
-          {required: true, message: '请输入用户名', trigger: 'blur'}
+          {required: true, message: '请输入学号', trigger: 'blur'}
         ],
         password: [
           {required: true, message: '请输入密码', trigger: 'blur'}
@@ -61,18 +61,24 @@ export default {
   methods: {
     doLogin () {
       let vm = this
-      this.$axios.post('/user/login', {loginNumber: this.user.loginNumber, password: this.user.password}
-      ).then(function () {
-        this.$axios.get('/user/login', {
-        }).then(function (res) {
-          vm.$store.commit('edit', res.data)
-          alert('登录成功')
-          console.log(vm.$store.state.localToken)
-          vm.$router.push({path: '/home'})
-        }).catch(function () {
-          alert('登录失败')
+      if (vm.user.loginNumber === '' || vm.user.password === '') {
+        alert('账户密码不能为空')
+      } else {
+        this.$axios.post('/user/login', {loginNumber: this.user.loginNumber, password: this.user.password}
+        ).then(function () {
+          vm.$axios.get('/user/login', {
+          }).then(function (res) {
+            vm.$store.commit('edit', res.data)
+            alert('登录成功')
+            console.log(vm.$store.state.localToken)
+            vm.$router.push({path: '/home'})
+          }).catch(function (status) {
+            if (status === 404) {
+              alert('登录失败')
+            }
+          })
         })
-      })
+      }
     },
     doRegister () {
       this.$router.push({ path: '/register' })

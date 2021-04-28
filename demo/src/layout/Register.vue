@@ -216,8 +216,7 @@ export default {
   },
   methods: {
     doRegister () {
-      this.$nextTick(() => {
-        this.$axios.post('/user/register',
+      let params =
           {
             loginNumber: this.user.loginNumber,
             password: this.user.password,
@@ -232,12 +231,13 @@ export default {
             phone: this.user.phone,
             code: this.user.code
           }
-        ).then(function () {
-          this.$router.push({ path: '/' })
-        }).catch(function (error) {
-          console.log(error)
-          alert('验证码错误')
-        })
+      this.$axios.post('/user/register',
+        params
+      ).then(function () {
+        this.$router.push({ path: '/' })
+      }).catch(function (error) {
+        console.log(error)
+        alert('验证码错误')
       })
     },
     doSend () {

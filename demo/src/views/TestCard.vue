@@ -3,7 +3,7 @@
     <el-card>
       <div slot="header">考试卡片</div>
       <div class="testcard">
-          <Cards v-for="o in 9" :key="o" />
+          <Cards v-for="id in test" :key="id" />
       </div>
     </el-card>
   </div>
@@ -23,7 +23,44 @@ export default {
     Cards: () => import('./modules/Cards')
   },
   data () {
-    return {}
+    return {
+      test: [{
+        id: 1
+      },
+      {
+        id: 2
+      },
+      {
+        id: 3
+      },
+      {
+        id: 4
+      },
+      {
+        id: 5
+      },
+      {
+        id: 6
+      },
+      {
+        id: 7
+      },
+      {
+        id: 8
+      },
+      {
+        id: 9
+      }]
+    }
+  },
+  methods: {
+  },
+  created () {
+    let vm = this
+    this.$axios.get('/'
+    ).then(function (res) {
+      vm.id = res.data.id
+    })
   }
 }
 </script>
